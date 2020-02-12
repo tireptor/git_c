@@ -3,7 +3,7 @@
 
 int main()
 {
-    exercice_4();
+    exercice_5();
     //exercice_2();
 
     return 0;
@@ -91,4 +91,19 @@ int exercice_4 ()
     printf("&var :\t %p\n", &var);
     printf("ptr :\t %p\n", ptr);
     printf("&ptr :\t %p\n", &ptr);
+}
+int exercice_5()
+{
+    const int taille = 5;
+    int * tab = (int *) malloc ( taille * sizeof(int));
+    int tabConst [taille];
+    tab[0] = 19;
+    tab[1] = 29;
+    tab[2] = 169;
+    tab[3] = 456;
+    printf("La valeur de tab : %d",tab[0]);
+    printf("La valeur de tab : %d",tab[1]);
+    printf("La valeur de tab : %d",tab[2]);
+    printf("La valeur de tab : %d",tab[3]);
+    free ( tab );
 }
