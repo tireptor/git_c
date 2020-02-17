@@ -94,16 +94,29 @@ int exercice_4 ()
 }
 int exercice_5()
 {
-    const int taille = 5;
+    int taille = 7;
     int * tab = (int *) malloc ( taille * sizeof(int));
+    //int * tab = (int *) malloc ( taille);
     int tabConst [taille];
-    tab[0] = 19;
-    tab[1] = 29;
-    tab[2] = 169;
-    tab[3] = 456;
-    printf("La valeur de tab : %d",tab[0]);
-    printf("La valeur de tab : %d",tab[1]);
-    printf("La valeur de tab : %d",tab[2]);
-    printf("La valeur de tab : %d",tab[3]);
+    tab[0] = 1946785;
+    tab[1] = 292345678;
+    tab[2] = 162345;
+    tab[3] = 459987;
+    tab[4] = 231234;
+    tab[5] = 4810987;
+    tab[6] = 292890;
+    tab[7] = 25461098;
+    taille = 10;
+    (int *) realloc( tab, taille * sizeof(int) );
+    //tab[5] = 600;
+    printf("La valeur de tab : %d \n",tab[0]);
+    printf("La valeur de tab : %d \n",tab[1]);
+    printf("La valeur de tab : %d \n",tab[2]);
+    printf("La valeur de tab : %d \n",tab[3]);
+    printf("La valeur de tab : %d \n",tab[4]);
+    printf("La valeur de tab : %d \n",tab[5]);
+    printf("La valeur de tab : %d \n",tab[6]);
+    printf("La valeur de tab : %d \n",tab[7]);
+    //printf("La valeur de tab : %d \n",tab[5]);
     free ( tab );
 }
