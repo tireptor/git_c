@@ -119,4 +119,6 @@ int exercice_5()
     printf("La valeur de tab : %d \n",tab[7]);
     //printf("La valeur de tab : %d \n",tab[5]);
     free ( tab );
+    tab[0] = 23;
+    printf("La valeur de tab après liberation : %d \n",tab[0]);
 }
