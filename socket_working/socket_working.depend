@@ -6,3 +6,11 @@
 	<iostream>
 	<string.h>
 
+1599845156 source:c:\dev\git_c\socket_working\main.cpp
+	<winsock2.h>
+	<stdio.h>
+	<stdlib.h>
+	<iostream>
+	<string.h>
+	<cstring>
+
