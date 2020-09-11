@@ -3,6 +3,7 @@
 #include <stdio.h>
 #include <stdlib.h>
 #include <iostream>
+#include <string.h>
 
 void sendSocket ()
 {
@@ -48,37 +49,61 @@ void receiveSocket ()
     WSACleanup();
 }
 
-void receiveAndSendSocket()
+void clientSocketV1()
 {
-     WSADATA WSAData;
+    WSADATA WSAData;
     SOCKET sock;
     SOCKET csock;
     SOCKADDR_IN sin;
-    SOCKADDR_IN csin;
     char buffer[255];
     WSAStartup(MAKEWORD(2,0), &WSAData);
     sock = socket(AF_INET, SOCK_STREAM, 0);
-    sin.sin_addr.s_addr = INADDR_ANY;
     sin.sin_addr.s_addr = inet_addr("127.0.0.1");
     sin.sin_family = AF_INET;
-    sin.sin_port = htons(23);
-    bind(sock, (SOCKADDR *)&sin, sizeof(sin));
-    listen(sock, 0);
+    sin.sin_port = htons(9100);
     connect(sock, (SOCKADDR *)&sin, sizeof(sin));
     recv(sock, buffer, sizeof(buffer), 0);
     std::cout << buffer;
-    if (buffer == "coucou")
-    {
-        int sinsize = sizeof(csin);
-        send(csock, "Hello world!\r\n", 14, 0);
-    }
+    //send(sock, "Hello world!\r\n", 14, 0);
+    strcat(buffer,"\r\n");
+    send(sock, buffer, 14, 0);
+    closesocket(sock);
+    WSACleanup();
 }
-
+void clientSocketV2()
+{
+    WSADATA WSAData;
+    SOCKET sock;
+    SOCKET csock;
+    SOCKADDR_IN sin;
+    char buffer[255];
+    std::string commande;
+    WSAStartup(MAKEWORD(2,0), &WSAData);
+    sock = socket(AF_INET, SOCK_STREAM, 0);
+    sin.sin_addr.s_addr = inet_addr("127.0.0.1");
+    sin.sin_family = AF_INET;
+    sin.sin_port = htons(9100);
+    connect(sock, (SOCKADDR *)&sin, sizeof(sin));
+    while (commande != "quit")
+    {
+        //buffer[0] = '\0';
+        memset (buffer, 0, sizeof (buffer));
+        recv(sock, buffer, sizeof(buffer), 0);
+        std::cout << buffer;
+        commande = buffer;
+        //send(sock, "Hello world!\r\n", 14, 0);
+        strcat(buffer,"\r\n");
+        send(sock, buffer, 14, 0);
+    }
+    closesocket(sock);
+    WSACleanup();
+}
 int main()
 {
     //sendSocket();
     //receiveSocket();
-    receiveAndSendSocket();
+    //clientSocketV1();
+    clientSocketV2();
     return 0;
 }
 
