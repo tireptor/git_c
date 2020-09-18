@@ -8,10 +8,8 @@
 int main()
 {
 SQLHENV env;
-if ( !SQL_SUCCEEDED(SQLAllocHandle(SQL_HANDLE_ENV,
-NULL, &env))
-)
-fprintf(stderr, "La fonction SQLAllocHandle a echoue
+if ( !SQL_SUCCEEDED(SQLAllocHandle(SQL_HANDLE_ENV,NULL, &env)))
+    fprintf(stderr, "La fonction SQLAllocHandle a echoue
 (SQL_HANDLE_ENV).
 \
 n");
